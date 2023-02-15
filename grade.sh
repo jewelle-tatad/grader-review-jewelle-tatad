@@ -22,8 +22,10 @@ pwd
 
 javac -cp $CPATH *.java
 
-if [[ $? -neq 0 ]]
+if [[ $? -eq 0 ]]
 then
+    echo 'Files successfully compiled!!'
+else
     echo 'Compilation error!!'
     exit
 fi
