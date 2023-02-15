@@ -4,7 +4,7 @@ rm -rf student-submission
 git clone $1 student-submission
 echo 'Finished cloning'
 
-cd student-submission
+cp student-submission/ListExamples.java ./
 
 if [[ -e ListExamples.java ]]
 then
@@ -14,21 +14,18 @@ else
     exit
 fi
 
-cd ..
-
-cp student-submission/ListExamples.java ./
-
-pwd
-
-javac -cp $CPATH *.java
+javac -cp $CPATH *.java 2>error-output.txt
 
 if [[ $? -eq 0 ]]
 then
     echo 'Files successfully compiled!!'
 else
     echo 'Compilation error!!'
+    cat error-output.txt
     exit
 fi
 
 java -cp $CPATH org.junit.runner.JUnitCore TestListExamples > grade.txt
+
+cat grade.txt
 
