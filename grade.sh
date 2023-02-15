@@ -22,7 +22,7 @@ pwd
 
 javac -cp $CPATH *.java
 
-if [[ -neq $? 0 ]]
+if [[ 0 -neq $? ]]
 then
     echo 'Compilation error!!'
     exit
