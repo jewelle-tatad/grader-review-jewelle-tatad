@@ -4,7 +4,7 @@ rm -rf student-submission
 git clone $1 student-submission
 echo 'Finished cloning'
 
-cp student-submission/ListExamples.java ./
+cd student-submission
 
 if [[ -e ListExamples.java ]]
 then
@@ -13,6 +13,10 @@ else
     echo 'ListExamples.java not found. Please check that ListExamples.java is in your submission.'
     exit
 fi
+
+cd ..
+
+cp student-submission/ListExamples.java ./
 
 javac -cp $CPATH *.java 2>error-output.txt
 
